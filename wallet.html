@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Crypto King</title>
+    <!-- slider stylesheet -->
+    <!-- slider stylesheet -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="css/responsive.css" rel="stylesheet" />
+    <style>
+      /* Add custom styles here */
+      body {
+        background-color: #000;
+        color: #fff;
+        font-family: Arial, sans-serif;
+      }
+      .crypto-container {
+        display: flex;
+        justify-content: space-around;
+      }
+      .crypto-card {
+        width: 300px;
+        padding: 20px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #111;
+      }
+      .chart-container {
+        width: 200px;
+        height: 100px;
+      }
+      h1 {
+        text-align: center;
+      }
+      h2 {
+        margin-top: 0;
+      }
+      p {
+        margin-bottom: 10px;
+      }
+      .buttons-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+      }
+      .buttons-container button {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 6px 12px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .buttons-container button.active {
+        background-color: #00ff00;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero_area">
+      <!-- header section strats -->
+      <header class="header_section">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <a class="navbar-brand" href="index.html">
+              <span>Crypto King</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+                <ul class="navbar-nav">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="indexLogin.html">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="aboutlogin.html"> About </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="howlogin.html"> How </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="wallet.html"><span>Wallet</span> <img src="images/wallet.png" alt="" /></a>
+                  </li>
+                  <li class="nav-item">
+                    <!-- <button onclick="signOut()">Sign Out</button> -->
+                    <a class="nav-link" onclick="signOut()">Sign Out</a>
+                  </li>
+                </ul>
+                <div class="user_option">
+                  <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
+                    <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <!-- end header section -->
+
+      <!-- how section -->
+      <section class="how_section layout_padding">
+        <h1>Cryptocurrency Information</h1>
+        <div class="crypto-container">
+          <div class="crypto-card" id="crypto1">
+            <h2>Bitcoin</h2>
+            <p>Symbol: <span id="symbol1"></span></p>
+            <p>Price: $<span id="price1"></span></p>
+            <div class="chart-container">
+              <canvas id="chart1"></canvas>
+            </div>
+          </div>
+          <div class="crypto-card" id="crypto2">
+            <h2>Ethereum</h2>
+            <p>Symbol: <span id="symbol2"></span></p>
+            <p>Price: $<span id="price2"></span></p>
+            <div class="chart-container">
+              <canvas id="chart2"></canvas>
+            </div>
+          </div>
+          <div class="crypto-card" id="crypto3">
+            <h2>XRP</h2>
+            <p>Symbol: <span id="symbol3"></span></p>
+            <p>Price: $<span id="price3"></span></p>
+            <div class="chart-container">
+              <canvas id="chart3"></canvas>
+            </div>
+          </div>
+        </div>
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>Sign Out</title>
+          <script>
+            function signOut() {
+              // Perform any necessary session cleanup or logout actions here
+              // For example:
+              
+              // 1. Clear session storage
+              sessionStorage.clear();
+              
+              // 2. Clear cookies
+              document.cookie = "session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+              
+              // 3. Send an API request to destroy the server-side session
+              fetch('/logout', {
+                method: 'POST',
+                credentials: 'include' // Include credentials if required
+              })
+                .then(response => {
+                  // Handle the response
+                  // ...
+                })
+                .catch(error => {
+                  // Handle the error
+                  // ...
+                });
+                history.pushState(null, null, "signout.html");
+      
+              // Redirect to the index page
+              window.location.href = "index.html";
+            }
+          </script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+          // Cryptocurrency data
+          const cryptoData = [
+            {
+              name: "Bitcoin",
+              symbol: "BTC",
+              id: "bitcoin",
+              price: 0,
+              chartData: {
+                labels: [],
+                data: [],
+              },
+            },
+            {
+              name: "Ethereum",
+              symbol: "ETH",
+              id: "ethereum",
+              price: 0,
+              chartData: {
+                labels: [],
+                data: [],
+              },
+            },
+            {
+              name: "XRP",
+              symbol: "XRP",
+              id: "ripple",
+              price: 0,
+              chartData: {
+                labels: [],
+                data: [],
+              },
+            },
+          ];
+
+          // Function to fetch historical data for a specific duration
+          function fetchHistoricalDataWithDuration(cryptoId, duration) {
+            const dateTo = new Date();
+            const dateFrom = new Date();
+            dateFrom.setMonth(dateFrom.getMonth() - duration);
+
+            const url = `https://api.coingecko.com/api/v3/coins/${cryptoId}/market_chart/range?vs_currency=usd&from=${dateFrom.getTime() / 1000}&to=${dateTo.getTime() / 1000}`;
+
+            return fetch(url)
+              .then(response => response.json())
+              .then(data => data.prices)
+              .catch(error => {
+                console.log("Error fetching historical data:", error);
+                return [];
+              });
+          }
+
+          // Function to update chart data based on the selected duration
+          function updateChartData(index, duration) {
+            const crypto = cryptoData[index];
+            const chartData = crypto.chartData;
+
+            fetchHistoricalDataWithDuration(crypto.id, duration)
+              .then(historicalData => {
+                chartData.labels = historicalData.map(dataPoint => formatDate(dataPoint[0]));
+                chartData.data = historicalData.map(dataPoint => dataPoint[1]);
+
+                const chart = Chart.getChart(`chart${index + 1}`);
+                chart.data.labels = chartData.labels;
+                chart.data.datasets[0].data = chartData.data;
+                chart.update();
+              })
+              .catch(error => {
+                console.log("Error fetching historical data:", error);
+              });
+          }
+
+          // Function to handle button click events
+          function handleButtonClick(index, duration) {
+            const buttons = document.querySelectorAll(`#crypto${index + 1} button`);
+            buttons.forEach(button => {
+              button.addEventListener("click", () => {
+                buttons.forEach(btn => btn.classList.remove("active"));
+                button.classList.add("active");
+                updateChartData(index, duration);
+              });
+            });
+          }
+
+          // Display cryptocurrency information and chart
+          function displayCryptoData(index) {
+            const crypto = cryptoData[index];
+            const card = document.getElementById(`crypto${index + 1}`);
+            card.querySelector("h2").textContent = crypto.name;
+            card.querySelector("#symbol" + (index + 1)).textContent = crypto.symbol;
+            card.querySelector("#price" + (index + 1)).textContent = "$" + crypto.price;
+
+            const ctx = document.getElementById(`chart${index + 1}`).getContext("2d");
+            const chart = new Chart(ctx, {
+              type: "line",
+              data: {
+                labels: crypto.chartData.labels,
+                datasets: [
+                  {
+                    label: "Price",
+                    data: crypto.chartData.data,
+                    borderColor: "#00ff00",
+                    backgroundColor: "rgba(0, 255, 0, 0.2)",
+                    borderWidth: 1,
+                    fill: true,
+                  },
+                ],
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                  display: false,
+                },
+                scales: {
+                  x: {
+                    display: false,
+                  },
+                  y: {
+                    display: false,
+                  },
+                },
+              },
+            });
+
+            // Add buttons for different durations
+            const durations = [7, 90, 180, 365];
+            const buttonsContainer = document.createElement("div");
+            buttonsContainer.classList.add("buttons-container");
+            durations.forEach(duration => {
+              const button = document.createElement("button");
+              button.textContent = `${duration}d`;
+              button.addEventListener("click", () => handleButtonClick(index, duration));
+              buttonsContainer.appendChild(button);
+            });
+            card.appendChild(buttonsContainer);
+          }
+
+          // Fetch initial cryptocurrency data and populate the chartData
+          function fetchInitialCryptoData() {
+            fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum,ripple")
+              .then(response => response.json())
+              .then(data => {
+                data.forEach((crypto, index) => {
+                  cryptoData[index].price = crypto.current_price;
+                  const chartData = cryptoData[index].chartData;
+
+                  // Fetch historical data for the past week
+                  fetchHistoricalDataWithDuration(crypto.id, 7)
+                    .then(historicalData => {
+                      chartData.labels = historicalData.map(dataPoint => formatDate(dataPoint[0]));
+                      chartData.data = historicalData.map(dataPoint => dataPoint[1]);
+
+                      // Display the cryptocurrency information and chart
+                      displayCryptoData(index);
+                    })
+                    .catch(error => {
+                      console.log("Error fetching historical data:", error);
+                    });
+                });
+              })
+              .catch(error => {
+                console.log("Error fetching cryptocurrency data:", error);
+              });
+          }
+
+          // Format date as "YYYY-MM-DD"
+          function formatDate(timestamp) {
+            const date = new Date(timestamp);
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, "0");
+            const day = String(date.getDate()).padStart(2, "0");
+            return `${year}-${month}-${day}`;
+          }
+
+          // Fetch initial cryptocurrency data and populate the charts
+          fetchInitialCryptoData();
+
+          // Update cryptocurrency values and charts every 10 seconds
+          setInterval(fetchInitialCryptoData, 10000);
+        </script>
+      </section>
+      <!-- end how section -->
+
+      <!-- info section -->
+      <section class="info_section layout_padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="info_contact">
+                <h5>Contact Us</h5>
+                <div>
+                  <div class="img-box">
+                    <img src="images/phone.png" width="18px" alt="" />
+                  </div>
+                  <p>+01 1234567890</p>
+                </div>
+                <div>
+                  <div class="img-box">
+                    <img src="images/envelope.png" width="18px" alt="" />
+                  </div>
+                  <p>demo@gmail.com</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="info_info">
+                <h5>Invest Money</h5>
+                <p>Investing in crypto is like stepping into a world of infinite possibilities. It's a chance to shape your financial future, embrace innovation, and be part of a revolution.</p>
+              </div>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+              <div class="info_form ">
+                <h5>Newsletter</h5>
+                <form action="">
+                  <input type="email" placeholder="Enter your email" />
+                  <button>Subscribe</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- end info_section -->
+      <!-- footer section -->
+      <section class="container-fluid footer_section">
+        <p>&copy; 2019 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a></p>
+      </section>
+      <!-- footer section -->
+      <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+      <script type="text/javascript" src="js/bootstrap.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+      <!-- owl carousel script -->
+      <script type="text/javascript">
+        $(".owl-carousel").owlCarousel({
+          loop: true,
+          margin: 0,
+          navText: [],
+          center: true,
+          autoplay: true,
+          autoplayHoverPause: true,
+          responsive: {
+            0: {
+              items: 1
+            },
+            1000: {
+              items: 3
+            }
+          }
+        });
+      </script>
+      <!-- end owl carousel script -->
+    </body>
+  </html>
