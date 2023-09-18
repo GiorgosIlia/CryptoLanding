@@ -41,7 +41,7 @@ To use this landing page, follow these steps:
 1. Clone the repository to your local machine.
 
 ```bash
-git clone https://github.com/george313/CryptoLanding.git
+git clone [https://github.com/george313/CryptoLanding.git](https://github.com/GiorgosIlia/CryptoLanding.git)
 ```
 
 2. Open the `index.html` file in your web browser to view the landing page.
